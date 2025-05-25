@@ -1,0 +1,6 @@
+com\middleware\config\MiddlewareConfigLoader.class
+com\middleware\core\MiddlewareChain.class
+com\middleware\core\Middleware.class
+com\middleware\middleware\Logging.class
+com\middleware\controller\MiddlewareTestController.class
+com\middleware\WebMiddleware.class
