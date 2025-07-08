@@ -56,7 +56,8 @@ designed for **clean, scalable request handling in Java microservices**.
 ```
 ├── middleware/ # JwtAuth, Logging, RateLimit
 ├── core/ # Middleware interface and chain
-└── controller/ # Example endpoints
+├── controller/ # Example endpoints
+└── config/ # Redis config
 ```
 ---
 
