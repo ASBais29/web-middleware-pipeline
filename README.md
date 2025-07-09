@@ -12,9 +12,9 @@ designed for **clean, scalable request handling in Java microservices**.
 
 ## Features
 
+- **📝 Request Logging**: Logs HTTP method and path for observability and debugging.
 - **🔐 JWT Authentication**: Validates Bearer tokens, rejecting invalid or missing tokens early.
 - **🚦 Redis Rate Limiting**: Enforces per-IP rate limiting using Redis for distributed readiness.
-- **📝 Request Logging**: Logs HTTP method and path for observability and debugging.
 - **🛠️ Modular Pipeline**: Easily extendable middleware chain architecture.
 
 ---
