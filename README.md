@@ -5,6 +5,7 @@ A **Spring Boot middleware pipeline** implementing:
 ✅ **JWT Authentication**  
 ✅ **Redis-backed Rate Limiting**  
 ✅ **Request Logging**
+✅ **Prometheus Metrics** 
 
 designed for **clean, scalable request handling in Java microservices**.
 
@@ -15,11 +16,20 @@ designed for **clean, scalable request handling in Java microservices**.
 - **📝 Request Logging**: Logs HTTP method and path for observability and debugging.
 - **🔐 JWT Authentication**: Validates Bearer tokens, rejecting invalid or missing tokens early.
 - **🚦 Redis Rate Limiting**: Enforces per-IP rate limiting using Redis for distributed readiness.
+- **📊 Prometheus Metrics**: Tracks both system and custom middleware metrics.
 - **🛠️ Modular Pipeline**: Easily extendable middleware chain architecture.
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Java 17+
+- Maven
+- Docker & Docker Compose
+
+---
 
 1. Clone the repository:
 ```
@@ -35,12 +45,21 @@ docker-compose up --build
 
 3. Access on:
 ```
-http://localhost:8080
+http://localhost:8080/middlewareTest
 ```
 
-4. Redis is automatically started and injected into the app. 
+4. Redis is automatically started and injected into the app.
 
+### 📊 Prometheus Metrics
+1. Metrics are available at:
+```
+http://localhost:8080/actuator/prometheus
+```
 
+3. Sample Output:
+```
+middleware_rate_limit_exceeded_total 3.0
+```   
 
 ---
 
@@ -60,10 +79,18 @@ http://localhost:8080
 
 ## Project src/main/java/com/middleware/
 ```
-├── middleware/ # JwtAuth, Logging, RateLimit
-├── core/ # Middleware interface and chain
-├── controller/ # Example endpoints
-└── config/ # Redis config
+WebMiddlewarePipeline/
+├── src/main/java/com/middleware/
+│   ├── core/           # Middleware interface & chain
+│   ├── middleware/     # JwtAuth, Logging, RateLimit
+│   ├── config/         # JwtConfig
+│   └── controller/     # Example endpoints
+├── src/main/resources/
+│   └── application.properties
+├── Dockerfile
+├── docker-compose.yml
+├── pom.xml
+└── README.md
 ```
 ---
 
