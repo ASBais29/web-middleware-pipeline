@@ -3,12 +3,12 @@ package com.middleware.middleware;
 
 import java.nio.charset.StandardCharsets;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-
+import com.middleware.config.JwtConfig;
 import com.middleware.core.Middleware;
 import com.middleware.core.MiddlewareChain;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -18,8 +18,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class JwtAuth implements Middleware {
-    private final String secretKey = "your-secret-key-should-be-env-variable12345";
+    private final JwtConfig jwtConfig;
 
+    @Autowired
+    public JwtAuth(JwtConfig jwtConfig) {
+        this.jwtConfig = jwtConfig;
+    }
     @Override
     public void apply(HttpServletRequest request,
                                     HttpServletResponse response,
@@ -27,6 +31,7 @@ public class JwtAuth implements Middleware {
             throws Exception {
 
         String authHeader = request.getHeader("Authorization");
+        String secretKey = jwtConfig.getSecret();
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String jwt = authHeader.substring(7);

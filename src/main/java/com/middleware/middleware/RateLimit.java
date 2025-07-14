@@ -2,6 +2,8 @@ package com.middleware.middleware;
 
 import com.middleware.core.Middleware;
 import com.middleware.core.MiddlewareChain;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Counter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,14 @@ import java.util.concurrent.TimeUnit;
 public class RateLimit implements Middleware {
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private final StringRedisTemplate redisTemplate;
+    private final Counter rateLimitExceededCounter;
+
+    @Autowired
+    public RateLimit(StringRedisTemplate redisTemplate, MeterRegistry meterRegistry) {
+        this.redisTemplate = redisTemplate;
+        this.rateLimitExceededCounter = meterRegistry.counter("middleware_rate_limit_exceeded");
+    }
 
     private static final long MIN_INTERVAL_SECONDS = 1; // 1 request per second
 
@@ -33,6 +42,7 @@ public class RateLimit implements Middleware {
         }
 
         if (count > 1) {
+            rateLimitExceededCounter.increment();
             response.setStatus(429);
             response.getWriter().write("Rate limit exceeded (Redis)");
             return;
