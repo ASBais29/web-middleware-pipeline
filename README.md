@@ -2,10 +2,12 @@
 
 A **Spring Boot middleware pipeline** implementing:
 
-✅ **JWT Authentication**  
-✅ **Redis-backed Rate Limiting**  
-✅ **Request Logging**
-✅ **Prometheus Metrics** 
+A Spring Boot middleware pipeline implementing:
+
+- ✅ JWT Authentication  
+- ✅ Redis-backed Rate Limiting  
+- ✅ Request Logging  
+- ✅ Prometheus Metrics  
 
 designed for **clean, scalable request handling in Java microservices**.
 
@@ -49,6 +51,8 @@ http://localhost:8080/middlewareTest
 ```
 
 4. Redis is automatically started and injected into the app.
+
+   
 
 ### 📊 Prometheus Metrics
 1. Metrics are available at:
@@ -102,4 +106,5 @@ MIT License.
 
 ## Why This Project
 
-This project demonstrates **middleware pipeline design, JWT-based authentication, and Redis-backed rate limiting** using Spring Boot for **production-aligned backend engineering readiness**.
+This project demonstrates **middleware pipeline design, JWT-based authentication, Redis-backed rate limiting, and Prometheus observability via Micrometer** using Spring Boot for **production-aligned backend engineering readiness**.
+
