@@ -22,10 +22,11 @@ designed for **clean, scalable request handling in Java microservices**.
 ## Getting Started
 
 1. Clone the repository:
-    ```
-    git clone https://github.com/yourusername/WebMiddlewarePipeline.git
-    cd WebMiddlewarePipeline
-    ```
+```
+git clone https://github.com/yourusername/WebMiddlewarePipeline.git
+cd WebMiddlewarePipeline
+```
+
 2. Run Locally with Docker
 
 ```
