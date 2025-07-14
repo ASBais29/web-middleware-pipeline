@@ -21,20 +21,25 @@ designed for **clean, scalable request handling in Java microservices**.
 
 ## Getting Started
 
-1. **Run Redis locally** (using Docker recommended).
-2. Clone the repository:
+1. Clone the repository:
     ```
     git clone https://github.com/yourusername/WebMiddlewarePipeline.git
     cd WebMiddlewarePipeline
     ```
-3. Run the application:
-    ```
-    mvn spring-boot:run
-    ```
-4. Access on:
-    ```
-    http://localhost:8080
-    ```
+2. Run Locally with Docker
+
+```
+docker-compose up --build
+```
+
+3. Access on:
+```
+http://localhost:8080
+```
+
+4. Redis is automatically started and injected into the app. 
+
+
 
 ---
 
